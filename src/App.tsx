@@ -80,7 +80,7 @@ export default function App() {
       .filter((p) => (qty[p.id] ?? 0) > 0)
       .map((p) => `• ${qty[p.id]}x ${p.name} — ${formatCLP(p.price * qty[p.id]!)}`);
     const msg = [
-      "¡Hola Windy! 👋 Quiero hacer este pedido:",
+      "¡Hola Windy Pastelería! 👋 Quiero hacer este pedido:",
       "",
       ...lines,
       "",
@@ -129,7 +129,7 @@ export default function App() {
       <header className="relative overflow-hidden bg-wine text-cream">
         <img
           src={heroImg}
-          alt="Repostería de Windy recién horneada"
+          alt="Repostería de Windy Pastelería recién horneada"
           width={1600}
           height={1000}
           className="absolute inset-0 h-full w-full object-cover opacity-40"
@@ -143,7 +143,7 @@ export default function App() {
           <span className="rise-in mb-7 rounded-full border border-gold/45 px-4 py-1.5 text-[10.5px] uppercase tracking-[0.28em] text-gold">
             Santiago · Chile
           </span>
-          <h1 className="sr-only">Windy — Repostería de autor bajo pedido en Santiago</h1>
+          <h1 className="sr-only">Windy Pastelería — Repostería de autor bajo pedido en Santiago</h1>
           <img
             src={logoCream}
             alt="Windy"
@@ -218,7 +218,7 @@ export default function App() {
                 <div className="relative w-[42%] shrink-0 overflow-hidden bg-cream-2">
                   <img
                     src={p.photo}
-                    alt={`${p.name} de Windy`}
+                    alt={`${p.name} de Windy Pastelería`}
                     width={768}
                     height={768}
                     loading="lazy"
@@ -293,7 +293,7 @@ export default function App() {
       <footer className="mx-auto mt-16 max-w-[900px] border-t border-line px-6 pb-6 pt-8 text-center">
         <p className="font-display text-[17px] italic text-wine">Se anuncian con su aroma</p>
         <p className="mt-3 text-[12px] text-wine-dark/55">
-          Windy · Santiago, Chile · Pedidos con 24h de anticipación
+          Windy Pastelería · Santiago, Chile · Pedidos con 24h de anticipación
         </p>
       </footer>
 
