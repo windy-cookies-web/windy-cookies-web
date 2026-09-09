@@ -8,6 +8,7 @@ import redVelvet from "@/assets/cookie-red-velvet.jpg";
 import manjarNuez from "@/assets/cookie-manjar-nuez.jpg";
 import avenaPasas from "@/assets/cookie-avena-pasas.jpg";
 import matcha from "@/assets/cookie-matcha.jpg";
+import loafClasico from "@/assets/loaf-clasico.jpg";
 
 const WHATSAPP_NUMBER = "56944918213";
 
@@ -18,16 +19,20 @@ type Product = {
   note: string;
   price: number;
   photo: string;
+  availability: string;
 };
 
-// TODO: reemplazar por la lista real (galletas, loaf, postres de autor) cuando Jesús la envíe
+// TODO: reemplazar por la lista real (postres de autor) cuando Jesús la envíe
+// TODO: falta el sabor real del Loaf — hoy dice "por confirmar"
+// "availability" se puede cambiar a mano acá cuando haya stock horneado el mismo día
 const products: Product[] = [
-  { id: "choc_chip", name: "Choco Chip Clásica", desc: "Mantequilla, chips semi-amargos", note: "La de siempre", price: 2500, photo: chocChip },
-  { id: "doble_choc", name: "Doble Chocolate", desc: "Cacao + chips de chocolate", note: "Intensa", price: 2800, photo: dobleChoc },
-  { id: "red_velvet", name: "Red Velvet", desc: "Con relleno de cream cheese", note: "Rellena", price: 3200, photo: redVelvet },
-  { id: "manjar_nuez", name: "Manjar y Nuez", desc: "Manjar casero, nuez tostada", note: "Muy chilena", price: 2900, photo: manjarNuez },
-  { id: "avena_pasas", name: "Avena y Pasas", desc: "Receta tradicional", note: "De la abuela", price: 2400, photo: avenaPasas },
-  { id: "matcha_wc", name: "Matcha White Choc", desc: "Té matcha, chips blancos", note: "Edición corta", price: 3200, photo: matcha },
+  { id: "choc_chip", name: "Choco Chip Clásica", desc: "Mantequilla, chips semi-amargos", note: "La de siempre", price: 2500, photo: chocChip, availability: "Bajo pedido · 24h" },
+  { id: "doble_choc", name: "Doble Chocolate", desc: "Cacao + chips de chocolate", note: "Intensa", price: 2800, photo: dobleChoc, availability: "Bajo pedido · 24h" },
+  { id: "red_velvet", name: "Red Velvet", desc: "Con relleno de cream cheese", note: "Rellena", price: 3200, photo: redVelvet, availability: "Bajo pedido · 24h" },
+  { id: "manjar_nuez", name: "Manjar y Nuez", desc: "Manjar casero, nuez tostada", note: "Muy chilena", price: 2900, photo: manjarNuez, availability: "Bajo pedido · 24h" },
+  { id: "avena_pasas", name: "Avena y Pasas", desc: "Receta tradicional", note: "De la abuela", price: 2400, photo: avenaPasas, availability: "Bajo pedido · 24h" },
+  { id: "matcha_wc", name: "Matcha White Choc", desc: "Té matcha, chips blancos", note: "Edición corta", price: 3200, photo: matcha, availability: "Bajo pedido · 24h" },
+  { id: "loaf_clasico", name: "Loaf", desc: "Sabor por confirmar", note: "Nuevo", price: 8000, photo: loafClasico, availability: "Bajo pedido · 24h" },
 ];
 
 const infoMessages = [
@@ -37,9 +42,9 @@ const infoMessages = [
 ];
 
 const steps = [
-  { n: "01", t: "Arma tu caja", d: "Elige tus piezas y cantidades acá mismo." },
-  { n: "02", t: "Envía por WhatsApp", d: "Tu pedido llega escrito, listo para confirmar." },
-  { n: "03", t: "Horneamos y entregamos", d: "Con 24h de anticipación, recién salido del horno." },
+  { n: "01", t: "Escoge tus productos", d: "Elige tus piezas y cantidades acá mismo." },
+  { n: "02", t: "Transfiere y confirma", d: "Pagas y nos envías el comprobante junto a tu pedido, todo por WhatsApp." },
+  { n: "03", t: "Horneamos y entregamos", d: "Por ahora con 24h de anticipación — algunos antojos ya están saliendo al momento." },
 ];
 
 const formatCLP = (n: number) => "$" + n.toLocaleString("es-CL");
@@ -64,7 +69,7 @@ export default function App() {
   const changeQty = (id: string, delta: number) => {
     setQty((q) => ({ ...q, [id]: Math.max(0, (q[id] ?? 0) + delta) }));
     if (delta > 0) {
-      setToast("Sumada a tu caja");
+      setToast("Sumado a tu pedido");
       if (toastTimer.current) clearTimeout(toastTimer.current);
       toastTimer.current = setTimeout(() => setToast(null), 1400);
       setPulse(false);
@@ -85,6 +90,13 @@ export default function App() {
       ...lines,
       "",
       `Total: ${formatCLP(totalPrice)}`,
+      "",
+      "Para pagar por transferencia:",
+      "Cuenta RUT Banco Estado 26.220.691",
+      "Nombre: (pendiente)",
+      "RUT: (pendiente)",
+      "",
+      "Adjunto mi comprobante de transferencia 📎",
       "",
       "Nombre:",
       "Dirección / retiro:",
@@ -112,13 +124,13 @@ export default function App() {
         <button
           onClick={() => menuRef.current?.scrollIntoView({ behavior: "smooth" })}
           onAnimationEnd={() => setPulse(false)}
-          aria-label="Ver tu caja"
+          aria-label="Ver tu pedido"
           className={
             "absolute right-2 top-1/2 z-[70] flex -translate-y-1/2 items-center gap-2 rounded-full border border-gold/40 bg-wine px-3 py-1 text-[11px] font-bold tracking-normal text-cream shadow-[var(--shadow-float)] " +
             (pulse ? "badge-pulse" : "")
           }
         >
-          <span className="font-display italic normal-case">caja</span>
+          <span className="font-display italic normal-case">pedido</span>
           <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-gold text-[11px] text-wine-dark">
             {totalItems}
           </span>
@@ -162,7 +174,7 @@ export default function App() {
             style={{ animationDelay: "240ms" }}
           >
             Galletas, loaf y postres de autor horneados bajo pedido, en tandas cortas y sin conservantes.
-            Arma tu caja acá y coordinamos pago y entrega por WhatsApp.
+            Elige tus productos acá y coordinamos pago y entrega por WhatsApp.
           </p>
           <button
             onClick={() => menuRef.current?.scrollIntoView({ behavior: "smooth" })}
@@ -233,6 +245,9 @@ export default function App() {
                   <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-wine-soft/80">{p.note}</span>
                   <h3 className="mt-1.5 font-display text-[19px] font-semibold leading-tight text-wine">{p.name}</h3>
                   <p className="mt-1.5 text-[12.5px] leading-snug text-wine-dark/60">{p.desc}</p>
+                  <span className="mt-2 inline-block w-fit rounded-full bg-cream-2 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-[0.1em] text-wine-soft">
+                    {p.availability}
+                  </span>
 
                   <div className="mt-auto flex items-center justify-between gap-2 pt-4">
                     <span className="font-display text-[19px] font-bold text-wine">{formatCLP(p.price)}</span>
@@ -269,7 +284,7 @@ export default function App() {
             </span>
             <h3 className="mt-4 font-display text-[24px] font-semibold">Transferencia bancaria</h3>
             <p className="mx-auto mt-2 max-w-[320px] text-[12px] leading-relaxed text-cream/60">
-              Faltan nombre, RUT y email — se completan cuando los envíes.
+              Estos datos ya vienen incluidos en tu mensaje de WhatsApp al ordenar. Faltan nombre, RUT y email — se completan cuando los envíes.
             </p>
           </div>
           <dl className="mt-7 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-dashed border-cream/25 pt-6 text-[13.5px]">
@@ -287,6 +302,27 @@ export default function App() {
               </div>
             ))}
           </dl>
+        </section>
+
+        {/* ---------- Entrega ---------- */}
+        <section className="mx-auto mt-8 max-w-[560px] rounded-2xl border border-line bg-card px-6 py-8">
+          <div className="text-center">
+            <span className="rounded-full border border-wine/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-wine-soft">
+              Cómo te lo entregamos
+            </span>
+            <h3 className="mt-4 font-display text-[22px] font-semibold text-wine">Opciones de entrega</h3>
+          </div>
+          <div className="mt-6 space-y-4 text-[13px] leading-relaxed text-wine-dark/75">
+            <div>
+              <b className="text-wine">Retiro personal</b> — sin costo, coordinamos horario por WhatsApp.
+            </div>
+            <div>
+              <b className="text-wine">Despacho propio</b> — cuando hay disponibilidad, lo llevamos nosotros mismos. A coordinar según la zona.
+            </div>
+            <div>
+              <b className="text-wine">Rappi / Uber</b> — pedimos el courier por ti y tú pagas ese envío directamente. El valor lo calcula la app según tu dirección y no es fijo — te lo confirmamos por WhatsApp antes de pedirlo.
+            </div>
+          </div>
         </section>
       </main>
 
@@ -306,7 +342,7 @@ export default function App() {
       >
         <div className="mx-auto flex max-w-[620px] items-center justify-between gap-3 rounded-t-2xl bg-wine-dark px-5 py-4 text-cream shadow-[0_-14px_40px_-20px_oklch(0.26_0.1_14/0.8)] sm:mb-4 sm:rounded-2xl">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-cream/55">Tu caja</div>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-cream/55">Tu pedido</div>
             <div className="mt-0.5 text-[13px]">
               <b className="font-display text-[19px]">{totalItems}</b> pieza{totalItems === 1 ? "" : "s"} ·{" "}
               <span className="font-display text-[17px] text-gold">{formatCLP(totalPrice)}</span>
@@ -328,7 +364,7 @@ export default function App() {
           (toast ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")
         }
       >
-        {toast ?? "Sumada a tu caja"}
+        {toast ?? "Sumado a tu pedido"}
       </div>
     </div>
   );
