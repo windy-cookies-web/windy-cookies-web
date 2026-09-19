@@ -1,38 +1,77 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windy Pastelería — Repostería de autor bajo pedido | Santiago</title>
-    <meta name="description" content="Galletas, loaf y postres de autor horneados bajo pedido en Santiago. Arma tu caja y coordina todo por WhatsApp." />
-    <meta name="keywords" content="repostería de autor, galletas artesanales, loaf, postres, Santiago, Windy Pastelería" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Windy Pastelería — Repostería de autor bajo pedido" />
-    <meta property="og:description" content="Galletas, loaf y postres de autor horneados bajo pedido. Arma tu caja y coordina todo por WhatsApp." />
-    <meta property="og:locale" content="es_CL" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="robots" content="index, follow" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Karla:wght@400;500;600;700&display=swap"
-    />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Bakery",
-        "name": "Windy Pastelería",
-        "description": "Galletas, loaf y postres de autor horneados bajo pedido, con pedidos coordinados por WhatsApp.",
-        "servesCuisine": "Repostería de autor",
-        "priceRange": "$$",
-        "telephone": "+56944918213",
-        "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" }
-      }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!doctype html>
+<html lang="es-CL">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="/favicon.ico" />
+		<title>Windy Pastelería — Se anuncian con su aroma | Galletas y loaf de autor en Santiago</title>
+		<meta
+			name="description"
+			content="Repostería de autor en Santiago de Chile. Galletas, loaf y postres horneados bajo pedido, en tandas chicas y nunca de bodega. Pide por WhatsApp con 24 horas de anticipación."
+		/>
+		<meta name="theme-color" content="#581826" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_CL" />
+		<meta property="og:site_name" content="Windy Pastelería" />
+		<meta property="og:title" content="Windy Pastelería — Se anuncian con su aroma" />
+		<meta
+			property="og:description"
+			content="Galletas, loaf y postres de autor horneados bajo pedido en Santiago. Tandas chicas, nunca de bodega. Pide por WhatsApp."
+		/>
+		<meta property="og:image" content="/og-image.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Windy Pastelería — Se anuncian con su aroma" />
+		<meta
+			name="twitter:description"
+			content="Galletas, loaf y postres de autor horneados bajo pedido en Santiago."
+		/>
+		<meta name="twitter:image" content="/og-image.png" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Karla:ital,wght@0,300..700;1,300..600&display=swap"
+			rel="stylesheet"
+		/>
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Bakery",
+				"name": "Windy Pastelería",
+				"slogan": "Se anuncian con su aroma",
+				"description": "Repostería de autor: galletas, loaf y postres horneados bajo pedido en tandas chicas. Pedidos por WhatsApp con 24 horas de anticipación.",
+				"image": "https://windy-pasteleria.cl/og-image.png",
+				"telephone": "+56944918213",
+				"priceRange": "$$",
+				"servesCuisine": "Repostería",
+				"areaServed": { "@type": "City", "name": "Santiago" },
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Santiago",
+					"addressRegion": "Región Metropolitana",
+					"addressCountry": "CL"
+				},
+				"paymentAccepted": "Transferencia bancaria",
+				"hasOfferCatalog": {
+					"@type": "OfferCatalog",
+					"name": "La carta",
+					"itemListElement": [
+						{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Choco Chip Clásica" }, "price": "2500", "priceCurrency": "CLP" },
+						{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Doble Chocolate" }, "price": "2800", "priceCurrency": "CLP" },
+						{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Red Velvet" }, "price": "3200", "priceCurrency": "CLP" },
+						{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Manjar y Nuez" }, "price": "2900", "priceCurrency": "CLP" },
+						{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Avena y Pasas" }, "price": "2400", "priceCurrency": "CLP" },
+						{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Matcha White Choc" }, "price": "3200", "priceCurrency": "CLP" },
+						{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Loaf" }, "price": "8000", "priceCurrency": "CLP" }
+					]
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+	</body>
 </html>
