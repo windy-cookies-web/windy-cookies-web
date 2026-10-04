@@ -39,13 +39,6 @@ export function Hero() {
         </div>
 
         <p
-          className="fade-up display mt-7 text-3xl italic text-cream sm:text-4xl lg:text-5xl"
-          style={{ "--delay": "460ms" } as CSSProperties}
-        >
-          “{business.slogan}”
-        </p>
-
-        <p
           className="fade-up mx-auto mt-6 max-w-xl text-[0.95rem] leading-relaxed text-cream/80 sm:text-base"
           style={{ "--delay": "600ms" } as CSSProperties}
         >
