@@ -2,7 +2,6 @@
 
 export const business = {
   name: "Windy Pastelería",
-  slogan: "Se anuncian con su aroma",
   city: "Santiago",
   country: "Chile",
   // WhatsApp en formato internacional sin signos, para los links wa.me

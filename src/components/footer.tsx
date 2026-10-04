@@ -12,8 +12,6 @@ export function Footer() {
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <Logo variant="cream" size="md" />
 
-        <p className="display mt-8 text-2xl italic text-cream/90 sm:text-3xl">“{business.slogan}”</p>
-
         <div className="hairline mx-auto mt-10 w-28" />
 
         <div className="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:justify-center sm:gap-10">
